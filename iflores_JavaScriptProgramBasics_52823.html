@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Program</title>
+</head>
+<body>
+  <script>
+    for (let count = 0; count <= 10; count++) {
+      if (count % 2 === 0) {
+        document.write("Count " + count + " is even<br>");
+      } else {
+        document.write("Count " + count + " is odd<br>");
+      }
+    }
+
+    let myNum;
+    do {
+      myNum = parseInt(prompt("Enter a number between 5 and 20:"));
+    } while (isNaN(myNum) || myNum < 5 || myNum > 20);
+
+    let counter = 1;
+    do {
+      document.write("Loop counter: " + counter + "<br>");
+      counter++;
+    } while (counter <= myNum);
+
+    let subjects = [
+      "Accounting",
+      "Algebra",
+      "Programming",
+      "Art",
+      "Data Analytics"
+    ];
+
+    document.write("<br>Subjects:<br>");
+    subjects.forEach(function(subject) {
+      document.write(subject + "<br>");
+    });
+
+    document.write("<br>Subjects separated by commas: " + subjects.join(", "));
+  </script>
+</body>
+</html>
