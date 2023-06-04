@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tip Calculator</title>
+  <script>
+    const isValidServiceQuality = (serviceQuality) => ['great', 'ok', 'poor'].includes(serviceQuality.toLowerCase());
+    const isValidServiceAmount = (serviceAmount) => !isNaN(serviceAmount) && serviceAmount >= 5 && serviceAmount <= 500;
+    const calculateTip = (serviceAmount, serviceQuality) => {
+      let tipPercentage;
+      switch (serviceQuality.toLowerCase()) {
+        case 'great':
+          tipPercentage = 0.2;
+          break;
+        case 'ok':
+          tipPercentage = 0.15;
+          break;
+        case 'poor':
+          tipPercentage = 0.1;
+          break;
+        default:
+          tipPercentage = 0;
+          break;
+      }
+      const tipAmount = serviceAmount * tipPercentage;
+      const totalAmount = serviceAmount + tipAmount;
+      return [tipAmount, totalAmount];
+    }
+    const calculateTipAmount = (event) => {
+      event.preventDefault();
+
+      const serviceAmountInput = parseFloat(document.getElementById('serviceAmount').value);
+      const serviceQualityInput = document.getElementById('serviceQuality').value;
+
+      if (isValidServiceAmount(serviceAmountInput) && isValidServiceQuality(serviceQualityInput)) {
+        const [tipAmount, totalAmount] = calculateTip(serviceAmountInput, serviceQualityInput);
+        const resultElement = document.getElementById('result');
+        resultElement.innerHTML = `The ticket was $${serviceAmountInput.toFixed(2)} and the tip is $${tipAmount.toFixed(2)} for ${serviceQualityInput} service quality.`;
+        resultElement.innerHTML += `<br>The total amount for the meal with tip is $${totalAmount.toFixed(2)}.`;
+      } else {
+        alert('Please enter valid values for the service amount and quality.');
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Tip Calculator</h1>
+  <form onsubmit="calculateTipAmount(event)">
+    <label for="serviceAmount">Enter the dollar amount for the meal:</label>
+    <input type="number" step="0.01" min="5" max="500" id="serviceAmount" required>
+
+    <label for="serviceQuality">Enter the service quality (great, ok, poor):</label>
+    <input type="text" id="serviceQuality" required>
+
+    <button type="submit">Calculate Tip</button>
+  </form>
+
+  <div id="result"></div>
+</body>
+</html>
