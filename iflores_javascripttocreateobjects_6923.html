@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Dog</title>
+</head>
+<body>
+  <h1>My Dog Akamaru</h1>
+  <script>
+    let myDog = {
+      name: "Akamaru",
+      breed: "Nin-dog",
+      color: "White",
+      size: "Medium"
+    };
+    myDog.mySound = "I'm the most loyal companion you'll ever have!";
+    let message = "Meet " + myDog.name + ", a " + myDog.color + " " + myDog.breed + ".<br>";
+    message += "It's a " + myDog.size + " sized dog.<br>";
+    message += "This dog says, \"" + myDog.mySound + "\"";
+
+    document.write(message);
+    function myDogConst(name, breed, color, size) {
+      this.name = name;
+      this.breed = breed;
+      this.color = color;
+      this.size = size;
+      this.canTalk = false;
+    }
+
+    let myDog2 = new myDogConst("Akamaru", "Nin-dog", "White", "Medium");
+    myDog2.canTalk = true;
+
+    console.log(myDog2);
+  </script>
+</body>
+</html>
