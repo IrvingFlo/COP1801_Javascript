@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Akamaru</title>
+</head>
+<body>
+  <h1>My Dog Akamaru</h1>
+  <script>
+    let myDog = {
+      name: "Akamaru",
+      breed: "Nin-dog",
+      color: "White",
+      size: "Medium"
+    };
+    myDog.mySound = "I'm the most loyal companion you'll ever have!";
+    let message = "Meet " + myDog.name + ", a " + myDog.color + " " + myDog.breed + ".<br>";
+    message += "It's a " + myDog.size + " sized dog.<br>";
+    message += "This dog says, \"" + myDog.mySound + "\"";
+
+    document.write(message);
+
+    function Dog(name, breed, color, size) {
+      this.name = name;
+      this.breed = breed;
+      this.color = color;
+      this.size = size;
+      this.canTalk = false;
+
+      this.myGreeting = function(message) {
+        if (this.canTalk) {
+          if (message) {
+            console.log(message);
+          } else {
+            console.log("I can talk!");
+          }
+        } else {
+          console.log("I cannot talk.");
+        }
+      };
+    }
+
+    let dog1 = new Dog("Max", "Labrador", "Golden", "Large");
+    dog1.canTalk = true;
+    dog1.myGreeting("Hello!");
+
+    let dog2 = new Dog("Bella", "Poodle", "Black", "Small");
+    dog2.myGreeting();
+
+    for (var prop in dog1) {
+      if (dog1.hasOwnProperty(prop)) {
+        console.log(prop + ": " + dog1[prop]);
+      }
+    }
+
+    console.log("---");
+
+    for (var prop in dog2) {
+      if (dog2.hasOwnProperty(prop)) {
+        console.log(prop + ": " + dog2[prop]);
+      }
+    }
+  </script>
+</body>
+</html>
